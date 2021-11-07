@@ -1,8 +1,16 @@
-.Cell {
+.cell {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background-color: blue;
   border-style: solid;
+  border-color: rgba(0, 0, 0, 0.05);
   border-width: 1px;
+  padding: 0px;
+  margin: 0px;
+  font-size: 0px;
+  line-height: 0px;
+}
+
+.cell:hover {
+  border-color: rgba(0, 0, 0, 0.5);
 }
