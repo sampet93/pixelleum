@@ -1,43 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cell from "./Cell";
 import "../Grid.css";
 import "../Canvas.css";
 
-const initGrid = (width, height, defaultColor) => {
-  let grid = new Array(height);
-  for (let y = 0; y < grid.length; y++) {
-    grid[y] = new Array(width);
-    for (let x = 0; x < grid[y].length; x++) {
-      grid[y][x] = <Cell />;
-    }
-  }
-
-  return grid;
-};
-
-const getTableElements = (grid) => {
-  let tableElements = [];
-  for (let y = 0; y < grid.length; y++) {
-    let row = [];
-    for (let x = 0; x < grid[y].length; x++) {
-      row.push(grid[y][x]);
-    }
-    tableElements.push(<tr>{row}</tr>);
-  }
-
-  return tableElements;
-};
-
-const getCanvasTable = (tableElements) =>
-  tableElements.map((element) => <td>{element}</td>);
-
 const Grid = (props) => {
-  const [grid, setData] = useState(initGrid(props.width, props.height));
-  const canvas = getCanvasTable(getTableElements(grid));
-  console.log(grid);
+  const [dragging, setDragging] = useState(false);
+  const [canvas, setCanvas] = useState([]);
+
+  const mouseDownHandler = (e) => {
+    setDragging(true);
+  };
+  const mouseUpHandler = (e) => {
+    setDragging(false);
+  };
+
+  const initGrid = (width, height) => {
+    // Create the grid array of cells
+    let _grid = new Array(height);
+    for (let y = 0; y < _grid.length; y++) {
+      _grid[y] = new Array(width);
+      for (let x = 0; x < _grid[y].length; x++) {
+        _grid[y][x] = <Cell posX={x} posY={y} drag={dragging} />;
+      }
+    }
+
+    // Create table elements for every cell from grid array
+    let tableElements = [];
+    for (let y = 0; y < _grid.length; y++) {
+      let row = [];
+      for (let x = 0; x < _grid[y].length; x++) {
+        row.push(<td key={x + y}>{_grid[x][y]}</td>);
+      }
+      tableElements.push(<tr key={y}>{row}</tr>);
+    }
+
+    setCanvas(tableElements);
+  };
+
+  useEffect(() => {
+    initGrid(props.width, props.height);
+  }, []);
+
   return (
     <div className="canvas">
       <table
+        onMouseDown={mouseDownHandler}
+        onMouseUp={mouseUpHandler}
+        onMouseLeave={mouseUpHandler}
         className="grid"
         cellPadding="0"
         style={{
@@ -45,7 +54,7 @@ const Grid = (props) => {
           height: props.height * props.cellSize + "px",
         }}
       >
-        {canvas}
+        <tbody>{canvas}</tbody>
       </table>
     </div>
   );
