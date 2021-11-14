@@ -1,7 +1,10 @@
 .grid {
-  display: inline-block;
+  display: flex;
   border-collapse: collapse;
-  border: 0px;
+  border-style: solid;
+  border-color: #3a2d24;
+  border-radius: 0.25rem;
+  border-width: 0.5rem;
   font-size: 0px;
   line-height: 0px;
   padding: 0px;

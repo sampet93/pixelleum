@@ -1,0 +1,32 @@
+.toolbox-button {
+  flex-direction: column;
+  border-radius: 1vh;
+  border-style: solid;
+  border-color: #3a2d24;
+  color: white;
+  font-family: "VT323", monospace;
+  font-size: x-large;
+  background-color: #5e4c40;
+  width: 70px;
+  height: 78px;
+  cursor: pointer;
+}
+
+.toolbox-button:hover {
+  border-color: #5e4c40;
+  background-color: #7a675a;
+}
+
+.toolbox-button-selected {
+  flex-direction: column;
+  border-radius: 1vh;
+  border-style: solid;
+  border-color: #f5ad06;
+  color: #f5ad06;
+  font-family: "VT323", monospace;
+  font-size: x-large;
+  background-color: #6d5e4b;
+  width: 70px;
+  height: 78px;
+  cursor: pointer;
+}

@@ -49,10 +49,6 @@ const Grid = (props) => {
         onMouseLeave={mouseUpHandler}
         className="grid"
         cellPadding="0"
-        style={{
-          width: props.width * props.cellSize + "px",
-          height: props.height * props.cellSize + "px",
-        }}
       >
         <tbody>{canvas}</tbody>
       </table>
