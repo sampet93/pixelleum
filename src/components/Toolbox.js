@@ -18,7 +18,7 @@ const Toolbox = (props) => {
       }}
     >
       <Container>
-        <Row xs="auto" className="justify-content-sm-center g-2" style={{}}>
+        <Row xs="auto" className="justify-content-sm-center g-1" style={{}}>
           <Col>
             <ToolboxButton tool="pen" selected={true} />
           </Col>
@@ -26,7 +26,7 @@ const Toolbox = (props) => {
             <ToolboxButton tool="picker" selected={false} />
           </Col>
           <Col>
-            <ToolboxButton tool="pen" selected={false} />
+            <ToolboxButton tool="bucket" selected={false} />
           </Col>
           <Col>
             <ToolboxButton tool="pen" selected={false} />

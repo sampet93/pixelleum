@@ -1,3 +1,20 @@
+:root {
+  /* MAIN VARIABLES */
+  --bg-color: #7f8ca3;
+
+  /* TOOLBOX VARIABLES */
+  --tb-panel-bg: ;
+  --tb-btn-gap: 0px;
+  --tb-btn-border-radius: 1vh;
+  --tb-btn-main-bg-color: #5e4c40;
+  --tb-btn-main-bg-color-hover: #5e4c40;
+  --tb-btn-border-color: #3a2d24;
+  --tb-btn-border-color-hover: #5e4c40;
+  --tb-btn-border-color-selected: black;
+  --tb-btn-color-selected: black;
+  --tb-btn-main-bg-color-selected: white;
+}
+
 body {
   margin: 0;
   height: 100vh;

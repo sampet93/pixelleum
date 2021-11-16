@@ -21,6 +21,7 @@ const ToolboxButton = (props) => {
           <div className="toolbox-button" onClick={clickHandler}>
             <span class="material-icons md-48">edit</span>
             <p>PEN</p>
+            <p>PEN</p>
           </div>
         );
         break;
@@ -34,6 +35,18 @@ const ToolboxButton = (props) => {
           <div className="toolbox-button" onClick={clickHandler}>
             <span class="material-icons md-48">colorize</span>
             <p>PICKER</p>
+          </div>
+        );
+      case "bucket":
+        return selected ? (
+          <div className="toolbox-button-selected" onClick={clickHandler}>
+            <span class="material-icons md-48">format_color_fill</span>
+            <p>BUCKET</p>
+          </div>
+        ) : (
+          <div className="toolbox-button" onClick={clickHandler}>
+            <span class="material-icons md-48">format_color_fill</span>
+            <p>BUCKET</p>
           </div>
         );
 

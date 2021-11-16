@@ -1,5 +1,5 @@
 body {
-  background-color: #7f8ca3;
+  background-color: var(--bg-color);
 }
 
 .App {
