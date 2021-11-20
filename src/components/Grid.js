@@ -6,6 +6,11 @@ import "../Canvas.css";
 const Grid = (props) => {
   const [dragging, setDragging] = useState(false);
   const [canvas, setCanvas] = useState([]);
+  const [mainColor, setMainColor] = useState(props.mainColor);
+  const [secondaryColor, setSecondaryColor] = useState(props.secondaryColor);
+
+  let mainColorHelper = props.mainColor;
+  let secondaryColorHelper = props.secondaryColor;
 
   const mouseDownHandler = (e) => {
     setDragging(true);
@@ -14,13 +19,20 @@ const Grid = (props) => {
     setDragging(false);
   };
 
+  const updateMainColor = () => {
+    mainColorHelper = props.mainColor;
+    setMainColor(props.mainColor);
+  };
+
   const initGrid = (width, height) => {
     // Create the grid array of cells
     let _grid = new Array(height);
     for (let y = 0; y < _grid.length; y++) {
       _grid[y] = new Array(width);
       for (let x = 0; x < _grid[y].length; x++) {
-        _grid[y][x] = <Cell posX={x} posY={y} drag={dragging} />;
+        _grid[y][x] = (
+          <Cell posX={x} posY={y} drag={dragging} mainColor={mainColorHelper} />
+        );
       }
     }
 
@@ -38,8 +50,10 @@ const Grid = (props) => {
   };
 
   useEffect(() => {
+    updateMainColor();
     initGrid(props.width, props.height);
-  }, []);
+    console.log("UseEffect from Grid. Main color: " + mainColor);
+  }, [props.mainColor, props.secondaryColor]);
 
   return (
     <div className="canvas">

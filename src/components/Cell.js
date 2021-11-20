@@ -7,17 +7,18 @@ const Cell = (props) => {
 
   const clickHandler = (e) => {
     if (e.buttons === 1) {
-      setColor("#FF0000");
-      setPrevColor("#FF0000");
+      console.log(props.mainColor);
+      setColor(props.mainColor);
+      setPrevColor(props.mainColor);
     }
   };
 
   const mouseEnterHandler = (e) => {
     setPrevColor(color);
-    setColor("#FF0000");
+    setColor(props.mainColor);
     if (e.buttons === 1) {
-      setColor("#FF0000");
-      setPrevColor("#FF0000");
+      setColor(props.mainColor);
+      setPrevColor(props.mainColor);
     }
   };
 

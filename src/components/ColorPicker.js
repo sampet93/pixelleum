@@ -1,11 +1,21 @@
 import { useState } from "react";
-import SketchPicker from "react-color";
+import { PhotoshopPicker } from "react-color";
 
-const ColorPicker = () => {
+const ColorPicker = (props) => {
+  const [color, setColor] = useState("#FF0000");
+  const [pickerColor, setPickerColor] = useState("#FF0000");
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
 
   const handleClick = () => {
     setDisplayColorPicker(!displayColorPicker);
+  };
+
+  const handleChange = (color, event) => {
+    setPickerColor(color.hex);
+  };
+
+  const handleChangeComplete = (color, event) => {
+    setPickerColor(color.hex);
   };
 
   const styles = {
@@ -39,8 +49,35 @@ const ColorPicker = () => {
 
   return (
     <div>
-      <button onClick={handleClick} />
-      <div>{displayColorPicker ? <SketchPicker /> : null}</div>
+      <button
+        style={{
+          backgroundColor: color,
+          width: "50px",
+          height: "50px",
+          borderRadius: "10px",
+          borderStyle: "solid",
+          borderColor: "var(--tb-btn-border-color)",
+        }}
+        onClick={handleClick}
+      />
+      <div>
+        {displayColorPicker ? (
+          <PhotoshopPicker
+            color={pickerColor}
+            onChange={handleChange}
+            onChangeComplete={handleChangeComplete}
+            onAccept={() => {
+              setDisplayColorPicker(false);
+              props.mainColorSetter(pickerColor);
+              setColor(pickerColor);
+            }}
+            onCancel={() => {
+              setDisplayColorPicker(false);
+              setPickerColor(color);
+            }}
+          />
+        ) : null}
+      </div>
     </div>
   );
 };
