@@ -23,6 +23,10 @@ const Grid = (props) => {
     mainColorHelper = props.mainColor;
     setMainColor(props.mainColor);
   };
+  const updateSecondaryColor = () => {
+    secondaryColorHelper = props.secondaryColor;
+    setSecondaryColor(props.secondaryColor);
+  };
 
   const initGrid = (width, height) => {
     // Create the grid array of cells

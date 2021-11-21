@@ -2,8 +2,8 @@ import { useState } from "react";
 import { PhotoshopPicker } from "react-color";
 
 const ColorPicker = (props) => {
-  const [color, setColor] = useState("#FF0000");
-  const [pickerColor, setPickerColor] = useState("#FF0000");
+  const [color, setColor] = useState(props.defaultColor);
+  const [pickerColor, setPickerColor] = useState(props.defaultColor);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
 
   const handleClick = () => {
@@ -60,7 +60,7 @@ const ColorPicker = (props) => {
         }}
         onClick={handleClick}
       />
-      <div>
+      <div style={{ position: "absolute", zIndex: "2" }}>
         {displayColorPicker ? (
           <PhotoshopPicker
             color={pickerColor}
@@ -68,7 +68,7 @@ const ColorPicker = (props) => {
             onChangeComplete={handleChangeComplete}
             onAccept={() => {
               setDisplayColorPicker(false);
-              props.mainColorSetter(pickerColor);
+              props.colorSetter(pickerColor);
               setColor(pickerColor);
             }}
             onCancel={() => {

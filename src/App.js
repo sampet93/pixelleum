@@ -1,7 +1,6 @@
 import Grid from "./components/Grid";
 import Toolbox from "./components/Toolbox";
 import ColorPicker from "./components/ColorPicker";
-import ColorButton from "./components/ColorButton";
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,12 +11,14 @@ function App() {
   const GRID_HEIGHT = 16;
   const CELL_SIZE = 16;
 
-  const [mainColor, setMainColor] = useState("#FF0000");
-  const [secondaryColor, setSecondaryColor] = useState("#FF0000");
+  const [mainColor, setMainColor] = useState("#000000");
+  const [secondaryColor, setSecondaryColor] = useState("#FFFFFF");
 
   const mainColorSetter = (color) => {
     setMainColor(color);
-    console.log("Setting main color: " + color);
+  };
+  const secondaryColorSetter = (color) => {
+    setSecondaryColor(color);
   };
 
   // Disable default right click behaviour
@@ -51,7 +52,18 @@ function App() {
           />
         </Row>
         <Row className="justify-content-sm-center">
-          <ColorPicker mainColorSetter={mainColorSetter} />
+          <Col md="auto">
+            <ColorPicker
+              defaultColor={mainColor}
+              colorSetter={mainColorSetter}
+            />
+          </Col>
+          <Col md="auto">
+            <ColorPicker
+              defaultColor={secondaryColor}
+              colorSetter={secondaryColorSetter}
+            />
+          </Col>
         </Row>
       </Container>
     </div>
